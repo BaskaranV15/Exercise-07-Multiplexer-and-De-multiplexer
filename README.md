@@ -54,35 +54,50 @@ If the control input changes to AB = 10, then all the gates are restricted excep
 ### PROGRAM 
 /*
 Program for flipflops  and verify its truth table in quartus using Verilog programming.
-Developed by: 
-RegisterNumber:  
+Developed by: BASKARAN.V
+RegisterNumber:  2122222300
 */
-
-
-
-
-
-
-### RTL LOGIC  
-
-
-
-
-
-
-
-
+# mux
+```
+module mux(I0,I1,I2,I3,S0,S1,Y);
+input I0,I1,I2,I3,S0,S1;
+output Y;
+wire P,Q,R,S,S0C,S1C;
+not (S0C,S0);
+not (S1C,S1);
+and (P,S0C,S1C,I0);
+and (Q,S0C,S1,I1);
+and (R,S0,S1C,I2);
+and (S,S0,S1,I3);
+or (Y,P,Q,R,S);
+endmodule
+```
+# demux
+```
+module demux(Y0,Y1,Y2,Y3,S0,S1,I);
+input S0,S1,I;
+output Y0,Y1,Y2,Y3;
+wire S0C,S1C;
+not(S0C,S0);
+not(S1C,S1);
+and(Y0,I,S0C,S1C);
+and(Y1,I,S0C,S1);
+and(Y2,I,S0,S1C);
+and(Y3,I,S0,S1);
+endmodule
+```
+### RTL LOGIC 
+#### mux
+![Screenshot 2023-06-11 085935](https://github.com/BaskaranV15/Exercise-07-Multiplexer-and-De-multiplexer/assets/118703522/7796795c-713c-4094-bbca-7baead31a665)
+#### demux
+![Screenshot 2023-06-11 090136](https://github.com/BaskaranV15/Exercise-07-Multiplexer-and-De-multiplexer/assets/118703522/d01019d0-8267-4e62-b1d7-9a813df8609f)
 ### TIMING DIGRAMS  
-
-
-
-
-
+![Screenshot 2023-06-11 090545](https://github.com/BaskaranV15/Exercise-07-Multiplexer-and-De-multiplexer/assets/118703522/873be2b6-dc42-4237-80d6-d3d3f3f9b27f)
+![Screenshot 2023-06-11 090603](https://github.com/BaskaranV15/Exercise-07-Multiplexer-and-De-multiplexer/assets/118703522/48b15a86-1b4d-4698-94ab-e6306d158d1c)
 ### TRUTH TABLE 
-
-
-
-
-
-
+#### mux
+![Screenshot 2023-06-11 090742](https://github.com/BaskaranV15/Exercise-07-Multiplexer-and-De-multiplexer/assets/118703522/bfa78f59-bf29-4fcb-ab2e-acea6257b628)
+#### demux
+![Screenshot 2023-06-11 090751](https://github.com/BaskaranV15/Exercise-07-Multiplexer-and-De-multiplexer/assets/118703522/bcbc6f79-3c98-4242-8682-50ddc0a994e3)
 ### RESULTS 
+Hence, 4x1 Multiplexer and 1x4 Demultiplexer is been implemented and verified using verilog programming and its output are validated.
